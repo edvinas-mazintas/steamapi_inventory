@@ -22,8 +22,8 @@ body {
   padding-top: 5%;
   display: grid;
   grid-gap: 4px;
-  grid-template-columns: repeat(10, 128px);
-  grid-template-rows: repeat(5, 128px);
+  grid-template-columns: repeat(10, 96px);
+  grid-template-rows: repeat(5, 96px);
   grid-auto-flow: row;
   justify-content: center;
 }
