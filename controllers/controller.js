@@ -14,7 +14,7 @@ exports.addItems = function addItems(req, res){
 
 
 exports.getJSON = function(req, res){
-  var url = 'http://steamcommunity.com/inventory/76561198079713154/730/2?l=english';
+  var url = 'http://steamcommunity.com/inventory/76561198079713154/252490/2?l=english';
   axios.get(url).then((response) => {
     response.data.assets.forEach(asset => {
       response.data.descriptions.forEach(description => {
