@@ -1,0 +1,33 @@
+body {
+  margin: 40px;
+}
+
+.box {
+  background-color: #3c352e;
+  /* color: #fff; */
+  border-radius: 5px;
+  border-color: white;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 150%;
+}
+
+.box img{
+  width: 96px;
+  height: 96px;
+}
+
+.wrapper {
+  /* width: 200px; */
+  padding-top: 5%;
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: repeat(10, 96px);
+  grid-template-rows: repeat(5, 96px);
+  grid-auto-flow: row;
+  justify-content: center;
+}
+
+body {
+  background-color: black;
+}
