@@ -6,24 +6,29 @@ body {
   background-color: #3c352e;
   /* color: #fff; */
   /* border-radius: 5px; */
-  border-color: white;
+  /* border-color: white;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1px; */
   font-size: 150%;
+
+  outline-color: white;
+  outline-style: solid;
+  outline-width: 1px;
 }
+
 
 .box img{
   width: 96px;
   height: 96px;
-  position: absolute;
-  z-index: -1;
+  position: relative;
+  z-index: 0;
 }
 
 .wrapper {
   /* width: 200px; */
   padding-top: 5%;
   display: grid;
-  grid-gap: 4px;
+  grid-gap: 8px;
   grid-template-columns: repeat(10, 96px);
   grid-template-rows: repeat(5, 96px);
   grid-auto-flow: row;
