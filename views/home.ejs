@@ -21,7 +21,7 @@
     </div>
 
     <div class="error">
-      <%if (urls.length <= 0) { %>
+      <%if (urls.length <= 0 && shouldError) { %>
         <h1 class="errorMessage">Failed to get inventory!</h1>
         <% } %>
     </div>
