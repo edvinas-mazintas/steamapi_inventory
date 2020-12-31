@@ -43,6 +43,9 @@ exports.getJSONPost = function(req, res){
   var url = 'http://steamcommunity.com/inventory/76561198079713154/730/2?l=english';
   url = 'http://steamcommunity.com/inventory/'+steamid+'/730/2?l=english';
 
+  // if(!isNan(req.body.steamid)){
+    
+  // }
     axios.get(url).then((response) => {
       response.data.assets.forEach(asset => {
         response.data.descriptions.forEach(description => {
@@ -53,16 +56,19 @@ exports.getJSONPost = function(req, res){
         })
         
       })
-      
-  
       res.render('home', {
         urls : urls
       });
-  
       urls = [];
     })
     .catch(err => {
-      
+      res.render('home', {
+        urls : urls
+      });
     });
+
+    
+
+    
     
 }

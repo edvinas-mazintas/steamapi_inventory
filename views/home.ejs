@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
   <body>
 
+
+    
     <div class="form">
       <form class= "input" action="/search" method="POST">
         <label class= "inputText" for="steamid">Enter steamID:</label>
@@ -15,13 +19,20 @@
         <input type="submit" value="Submit" text="Submit">
       </form>
     </div>
+
+    <div class="error">
+      <%if (urls.length <= 0) { %>
+        <h1 class="errorMessage">Failed to get inventory!</h1>
+        <% } %>
+    </div>
+    
+
       <div class="wrapper">
-        <% for(var i = 0; i < urls.length; i++) { %>
-          <div class="box">
-            <img src="<%= urls[i] %> " alt="">
-          </div>
-       <% } %>
-  
+          <% for(var i = 0; i < urls.length; i++) { %>
+            <div class="box">
+              <img src="<%= urls[i] %> " alt="">
+            </div>
+         <% } %>
       </div>
   </body>
 </html>
