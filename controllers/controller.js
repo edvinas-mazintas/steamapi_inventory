@@ -14,22 +14,6 @@ exports.addItems = function addItems(req, res){
 
 
 exports.getJSON = function(req, res){
-  // var url = 'http://steamcommunity.com/inventory/76561198079713154/730/2?l=english';
-  // axios.get(url).then((response) => {
-  //   response.data.assets.forEach(asset => {
-  //     response.data.descriptions.forEach(description => {
-  //       if(asset.classid === description.classid){
-  //         urls.push(itemImageUrl + description.icon_url + "/96fx96f");
-  //       }
-        
-  //     });
-  //   });
-
-
-  // })
-  // .catch(err => {
-  //   console.error(err);
-  // });
   let shouldError = false;
   res.render('home', {
     urls : urls,
@@ -47,9 +31,6 @@ exports.getJSONPost = function(req, res){
   url = 'http://steamcommunity.com/inventory/'+steamid+'/440/2?l=english';
   let shouldError = true;
   
-  // if(!isNan(req.body.steamid)){
-    
-  // }
     axios.get(url).then((response) => {
       response.data.assets.forEach(asset => {
         response.data.descriptions.forEach(description => {
@@ -72,9 +53,4 @@ exports.getJSONPost = function(req, res){
         shouldError : true
       });
     });
-
-    
-
-    
-    
 }
