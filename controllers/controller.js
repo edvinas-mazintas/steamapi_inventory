@@ -28,7 +28,7 @@ exports.getJSONPost = function(req, res){
 
   var steamid = req.body.steamid;
   var url = 'http://steamcommunity.com/inventory/76561198079713154/730/2?l=english';
-  url = 'http://steamcommunity.com/inventory/'+steamid+'/440/2?l=english';
+  url = 'http://steamcommunity.com/inventory/'+steamid+'/730/2?l=english';
   let shouldError = true;
   
     axios.get(url).then((response) => {
