@@ -1,0 +1,28 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navigation-authenticated.ejs') %>
+
+
+<div class="error">
+  <%if (urls.length <= 0 && shouldError) { %>
+  <h1 class="errorMessage">Failed to get inventory!</h1>
+  <% } %>
+</div>
+
+<!-- is-variable is-1 -->
+<div class="container">
+  <div class='columns is-multiline is-mobile '>
+
+    <% for(var i = 0; i < urls.length; i++) { %>
+
+    <div class="column is-3-mobile is-2-tablet is-1-desktop" id="item-card">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            <img src="<%= urls[i] %> ">
+          </figure>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
