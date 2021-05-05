@@ -53,7 +53,9 @@ router.get('/auth/steam/return',
   //   req.url = req.originalUrl;
   //   next();
   // },
-  passport.authenticate('steam', {
+  passport.authenticate('steam', function (err) {
+    console.log(err)
+  }, {
     failureRedirect: '/profile'
   }),
   function (req, res) {
@@ -86,7 +88,7 @@ router.put('/profile/email', isAuthorized(['admin', 'user']), check('email').isE
   }
 })
 
-router.get('/admin', isAuthorized(['admin']), (req, res) =>{
+router.get('/admin', isAuthorized(['admin']), (req, res) => {
   res.render('admin')
 })
 
