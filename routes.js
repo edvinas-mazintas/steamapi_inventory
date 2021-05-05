@@ -55,7 +55,7 @@ router.get('/profile', isAuthorized(['admin', 'user']), profileController.render
 
 router.get('/inventory', isAuthorized(['admin', 'user']), controller.renderInventory)
 
-router.get('/logout', isAuthorized(['admin', 'user']), profileController.logout)
+router.post('/logout', isAuthorized(['admin', 'user']), profileController.logout)
 
 router.get('/session', isAuthorized(['admin', 'user']), (req, res) => {
   res.send(req.user)
