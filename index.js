@@ -22,6 +22,7 @@ const MongoStore = require('connect-mongo')
 
 app.use(methodOverride('_method'));
 
+app.set('trust proxy', 1);
 
 let connectionString = process.env.DB_STRING
 mongoose.connect(connectionString, {
@@ -44,7 +45,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: false
+    secure: true
   }
 }));
 
