@@ -34,7 +34,7 @@ function isAuthorized(roles) {
 
 
 
-router.get('/', controller.renderHome);
+router.get('/', controller.renderHome, controller.refreshInventory);
 router.post('/search', controller.renderInventory);
 
 
@@ -53,7 +53,6 @@ router.get('/auth/steam/return',
     failureRedirect: '/profile'
   }),
   function (req, res) {
-    controller.refreshInventory
     res.redirect('/');
   });
 
