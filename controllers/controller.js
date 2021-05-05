@@ -16,7 +16,7 @@ exports.renderHome = function (req, res) {
 }
 
 
-exports.refreshInventory = function(req, res) {
+exports.refreshInventory = function(req, res, next) {
   let steamid = req.user.steamid
   let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
 
@@ -48,6 +48,7 @@ exports.refreshInventory = function(req, res) {
      console.log(err)
     });
    
+    next()
 }
 
 
