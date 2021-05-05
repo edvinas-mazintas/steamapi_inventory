@@ -1,17 +1,10 @@
 <%- include('./partials/header.ejs') %>
 <%- include('./partials/navigation-profile.ejs') %>
 
-<!-- Top column -->
 <div class="container">
     <div class="columns">
         <div class="column">
             <div class="card">
-                <!-- <header class="card-header">
-                    <p class="card-header-title is-centered">
-                        Profile
-                    </p>
-                </header> -->
-
                 <div class="card-content">
 
                     <div class="field" style="text-align: center">
@@ -24,8 +17,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -45,6 +36,12 @@
                 <a href="#" class="navbar-item is-size-5">
                     Privacy
                 </a>
+
+                <% if(userType == 'admin') { %>
+                    <a href="/admin" class="navbar-item is-size-5">
+                        Admin
+                    </a>
+                <% } %>
             </div>
         </div>
 
@@ -76,18 +73,10 @@
                                     </p>
                                 </div>
 
-                                <!-- <div class="field is-grouped"> -->
                                 <div class="control">
                                     <input class="button is-link" type="submit" value="Save"></input>
                                 </div>
-
-                                <!-- </div> -->
-
-
-
-
                             </form>
-
 
                             <form class="control" action="/profile?_method=DELETE" method="POST">
                                 <div class="control">

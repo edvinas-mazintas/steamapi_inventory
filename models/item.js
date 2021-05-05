@@ -7,7 +7,6 @@ let item = new Schema({
     ownerSteamid: String,
     iconUrl: String,
     description: String
-    
 });
 
 const model = mongoose.model('items', item);

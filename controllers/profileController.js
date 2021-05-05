@@ -49,6 +49,7 @@ exports.renderProfile = function(req, res){
     res.render('profile',{
         profilePicture : req.user.avatar,
         personaname: req.user.personaname,
-        email: req.user.email
+        email: req.user.email,
+        userType: req.user.userType
       })
 }
