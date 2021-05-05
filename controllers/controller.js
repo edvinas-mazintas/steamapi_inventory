@@ -30,7 +30,6 @@ exports.refreshInventory = function(req, res) {
       response.data.assets.forEach(asset => {
         response.data.descriptions.forEach(description => {
           if (asset.classid === description.classid) {
-            urls.push(itemImageUrl + description.icon_url + "/96fx96f");
 
             let newItem = new Item({
               name: description.name,
@@ -53,11 +52,6 @@ exports.refreshInventory = function(req, res) {
 
 
 exports.renderInventory = function (req, res) {
-
-
-
-  
-
   let steamid = req.user.steamid
   let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
 

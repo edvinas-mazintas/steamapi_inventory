@@ -34,7 +34,7 @@ function isAuthorized(roles) {
 
 
 
-router.get('/', controller.renderHome, controller.refreshInventory);
+router.get('/', controller.refreshInventory, controller.renderHome);
 router.post('/search', controller.renderInventory);
 
 
