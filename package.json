@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "nodemon": "nodemon index.js",
-    "start": "nodemon index.js"
+    "start": "nodehero index.js"
+  },
+  "engines": {
+    "node": "14.x"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mongodb-js/charts-embed-dom": "^2.0.1",
     "axios": "^0.21.1",
     "connect-mongo": "^4.4.1",
     "dotenv": "^8.2.0",
@@ -20,6 +24,7 @@
     "express-validator": "^6.10.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.2",
+    "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",

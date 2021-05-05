@@ -3,6 +3,8 @@ let mongoose = require('mongoose')
 
 let item = new Schema({
     name: String,
+    ownerName: String,
+    ownerSteamid: String,
     iconUrl: String,
     description: String
     

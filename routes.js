@@ -67,7 +67,6 @@ router.get('/profile', isAuthorized(['admin', 'user']), profileController.render
 router.get('/inventory', isAuthorized(['admin', 'user']), controller.refreshInventory)
 
 
-
 router.get('/logout', isAuthorized(['admin', 'user']), profileController.logout)
 
 
@@ -87,9 +86,12 @@ router.put('/profile/email', isAuthorized(['admin', 'user']), check('email').isE
   }
 })
 
+router.get('/admin', isAuthorized(['admin']), (req, res) =>{
+  res.render('admin')
+})
+
 
 router.delete('/profile', isAuthorized(['admin', 'user']), profileController.deleteProfile)
-
 
 
 
