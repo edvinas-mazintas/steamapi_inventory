@@ -16,39 +16,43 @@ exports.renderHome = function (req, res) {
 }
 
 
-exports.refreshInventory = function(req, res, next) {
-  let steamid = req.user.steamid
-  let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
+exports.refreshInventory = function (req, res, next) {
 
-  Item.deleteMany({
-    ownerSteamid: steamid
-  }, (err, result) => {
-    console.log(err)
-  })
+  if (req.user !== undefined) {
+    let steamid = req.user.steamid
+    let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
 
-  axios.get(url).then((response) => {
-      response.data.assets.forEach(asset => {
-        response.data.descriptions.forEach(description => {
-          if (asset.classid === description.classid) {
+    Item.deleteMany({
+      ownerSteamid: steamid
+    }, (err, result) => {
+      console.log(err)
+    })
 
-            let newItem = new Item({
-              name: description.name,
-              ownerName: req.user.personaname,
-              ownerSteamid: req.user.steamid,
-              iconUrl: itemImageUrl + description.icon_url + "/96fx96f",
-              description: "Nothing"
-            })
+    axios.get(url).then((response) => {
+        response.data.assets.forEach(asset => {
+          response.data.descriptions.forEach(description => {
+            if (asset.classid === description.classid) {
 
-            newItem.save()
-          }
+              let newItem = new Item({
+                name: description.name,
+                ownerName: req.user.personaname,
+                ownerSteamid: req.user.steamid,
+                iconUrl: itemImageUrl + description.icon_url + "/96fx96f",
+                description: "Nothing"
+              })
+
+              newItem.save()
+            }
+          })
         })
       })
-    })
-    .catch(err => {
-     console.log(err)
-    });
-   
+      .catch(err => {
+        console.log(err)
+      });
     next()
+  }
+
+  next()
 }
 
 
