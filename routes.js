@@ -2,7 +2,6 @@ var express = require('express');
 var controller = require('./controllers/controller')
 var router = express.Router();
 var profileController = require('./controllers/profileController')
-var authentificationController = require('./controllers/authentificationController')
 var passport = require('passport');
 
 const {
@@ -36,7 +35,7 @@ function isAuthorized(roles) {
 
 
 router.get('/', controller.renderHome);
-router.post('/search', controller.refreshInventory);
+router.post('/search', controller.renderInventory);
 
 
 router.get('/auth/steam',
@@ -54,6 +53,7 @@ router.get('/auth/steam/return',
     failureRedirect: '/profile'
   }),
   function (req, res) {
+    controller.refreshInventory
     res.redirect('/');
   });
 
@@ -61,7 +61,7 @@ router.get('/auth/steam/return',
 router.get('/profile', isAuthorized(['admin', 'user']), profileController.renderProfile)
 
 
-router.get('/inventory', isAuthorized(['admin', 'user']), controller.refreshInventory)
+router.get('/inventory', isAuthorized(['admin', 'user']), controller.renderInventory)
 
 
 router.get('/logout', isAuthorized(['admin', 'user']), profileController.logout)

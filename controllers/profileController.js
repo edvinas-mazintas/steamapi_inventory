@@ -1,4 +1,5 @@
 var User = require('../models/user')
+var Item = require('../models/item')
 
 exports.updateEmail = function (req, res, next) {
 
@@ -21,6 +22,10 @@ exports.deleteProfile = function (req, res) {
     const steamid = {
         steamid: req.user.steamid
     }
+
+    Item.deleteMany({ownerSteamid : req.user.steamid}, (err, result) => {
+        console.log(err)
+    })
 
     User.findOneAndDelete(steamid, (err, result) => {
         if (err) {

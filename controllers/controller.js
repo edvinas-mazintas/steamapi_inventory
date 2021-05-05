@@ -15,7 +15,48 @@ exports.renderHome = function (req, res) {
   });
 }
 
-exports.refreshInventory = function (req, res) {
+
+exports.refreshInventory = function(req, res) {
+  let steamid = req.user.steamid
+  let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
+
+  Item.deleteMany({
+    ownerSteamid: steamid
+  }, (err, result) => {
+    console.log(err)
+  })
+
+  axios.get(url).then((response) => {
+      response.data.assets.forEach(asset => {
+        response.data.descriptions.forEach(description => {
+          if (asset.classid === description.classid) {
+            urls.push(itemImageUrl + description.icon_url + "/96fx96f");
+
+            let newItem = new Item({
+              name: description.name,
+              ownerName: req.user.personaname,
+              ownerSteamid: req.user.steamid,
+              iconUrl: itemImageUrl + description.icon_url + "/96fx96f",
+              description: "Nothing"
+            })
+
+            newItem.save()
+          }
+        })
+      })
+    })
+    .catch(err => {
+     console.log(err)
+    });
+   
+}
+
+
+exports.renderInventory = function (req, res) {
+
+
+
+  
 
   let steamid = req.user.steamid
   let url = 'http://steamcommunity.com/inventory/' + steamid + '/730/2?l=english';
