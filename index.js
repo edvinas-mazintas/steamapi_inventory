@@ -55,8 +55,8 @@ app.use(flash())
 
 
 passport.use(new SteamStrategy({
-    returnURL: `localhost:${port}/auth/steam/return`,
-    realm: `localhost:${port}/`,
+    returnURL: `https://steam-inventory-app.herokuapp.com/auth/steam/return`,
+    realm: `https://steam-inventory-app.herokuapp.com/`,
     apiKey: process.env.STEAM_API_KEY
   },
   function (identifier, profile, done) {
