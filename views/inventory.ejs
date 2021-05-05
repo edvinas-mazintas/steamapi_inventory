@@ -2,13 +2,19 @@
 <%- include('./partials/navigation-authenticated.ejs') %>
 
 
-
-
 <div class="container">
+  <div class="columns is-mobile">
+    <div class="column">
+      <form class="control" action="/search" method="POST">
+        <div class="control">
+            <input class="button is-link is-pulled-left" type="submit"
+                value="Refresh">
+        </div>
+    </form>
+    </div>
+  </div>
+
   <div class='columns is-multiline is-mobile '>
-
-    
-
       <% if(messages.ownershipFailure){ %>
         <div class="column">
           <div class="field">
@@ -32,7 +38,5 @@
           </div>
           <% } %>
      <% } %>
-
-
   </div>
 </div>

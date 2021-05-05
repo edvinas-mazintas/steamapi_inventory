@@ -9,7 +9,6 @@ const {
   validationResult
 } = require('express-validator')
 
-
 function isAuthorized(roles) {
   return async function (req, res, next) {
     let userRole
@@ -32,11 +31,8 @@ function isAuthorized(roles) {
   }
 }
 
-
-
 router.get('/', controller.refreshInventory, controller.renderHome);
 router.post('/search', controller.renderInventory);
-
 
 router.get('/auth/steam',
   passport.authenticate('steam', {
@@ -45,7 +41,6 @@ router.get('/auth/steam',
   function (req, res) {
     res.redirect('/');
   });
-
 
 router.get('/auth/steam/return',
 
@@ -56,15 +51,11 @@ router.get('/auth/steam/return',
     res.redirect('/');
   });
 
-
 router.get('/profile', isAuthorized(['admin', 'user']), profileController.renderProfile)
-
 
 router.get('/inventory', isAuthorized(['admin', 'user']), controller.renderInventory)
 
-
 router.get('/logout', isAuthorized(['admin', 'user']), profileController.logout)
-
 
 router.get('/session', isAuthorized(['admin', 'user']), (req, res) => {
   res.send(req.user)
@@ -85,7 +76,6 @@ router.put('/profile/email', isAuthorized(['admin', 'user']), check('email').isE
 router.get('/admin', isAuthorized(['admin']), (req, res) => {
   res.render('admin')
 })
-
 
 router.delete('/profile', isAuthorized(['admin', 'user']), profileController.deleteProfile)
 
